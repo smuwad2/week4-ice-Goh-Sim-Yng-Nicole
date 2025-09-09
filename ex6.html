@@ -17,13 +17,15 @@
     <ul id="shopList"></ul>
 
     <script>
-        
         // add code here
-        
+        const ddlist = document.getElementById("select_item");
+        ddlist.addEventListener("change", function(){
+            let liElem = document.createElement("li");
+            liElem.innerText = this.value;
+            document.getElementById("shopList").appendChild(liElem);
+        })
         
     </script>
-
-    
 
     </body>
 </html>
