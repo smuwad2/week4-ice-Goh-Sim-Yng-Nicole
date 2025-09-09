@@ -11,19 +11,45 @@
 
    <input type="text" id="inputText">
    <!-- add a button here for adding new item -->
+    <button id="btnAdd" onclick="addItem()">Enter</button>
 
    <ul>
-      <li>Notebook<!--<button>Delete</button></li>-->
-      <li>Jello</li>
-      <li>Spinach</li>
-      <li>Rice</li>
-      <li>Birthday Cake</li>
-      <li>Candles</li>
+      <!-- this.parentMode will treat the whole li element as one -->
+      <li>Notebook<button onclick="removeItem(this.parentMode)">delete</button></li>
+      <li>Jello<button onclick="removeItem(this.parentMode)">delete</button></li>
+      <li>Spinach<button onclick="removeItem(this.parentMode)">delete</button></li>
+      <li>Rice<button onclick="removeItem(this.parentMode)">delete</button></li>
+      <li>Birthday Cake<button onclick="removeItem(this.parentMode)">delete</button></li>
+      <li>Candles<button onclick="removeItem(this.parentMode)">delete</button></li>
    </ul>
 
    <script>
 
       // add code here
+      function addItem(){
+         const newItem = document.getElementById("inputText").value;
+         const ulElem = document.getElementsByTagName("ul")[0];
+         const newLiElem = document.createElement("li");
+         //Add new item
+         newLiElem.innerText = newItem;
+         ulElem.appendChild(newLiElem);
+
+         //Add delete button for new item
+         const btnElem = document.createElement("button");
+         btnElem.innerText = "delete";
+         btnElem.addEventListener("click", function(){
+            this.parentNode.remove();
+         });
+         newLiElem.appendChild(btnElem);
+         ulElem.appendChild(newLiElem);
+
+
+         
+      }
+      
+      function removeItem(obj){
+         obj.remove();
+      }
 
    </script>
 
